@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WishList.Data;
+using WishList.Models;
 
 namespace WishList.Controllers
 {
@@ -14,6 +15,19 @@ namespace WishList.Controllers
         public IActionResult Index()
         {
             return View("Index", _context.Items);
+        }
+
+        [HttpGet]
+        public IActionResult Create() {
+            return View("Create");
+        }
+
+        [HttpPost]
+        public IActionResult Create(Item item) { 
+            _context.Items.Add(item);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
