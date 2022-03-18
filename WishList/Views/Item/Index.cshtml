@@ -3,10 +3,9 @@
 <h1>Wishlist</h1>
 <a asp-action="create">Add item</a>
 <ul>
-    @{
-        foreach(var item in Model)
-        {
-            <li>@item.Description <a asp-action="delete" id=@item.Id>delete</a></li>
-        }
+    @foreach(var item in Model)
+    {
+        <li>@item.Description <a asp-action="delete" id="@item.Id">delete</a></li>
     }
+    
 </ul>
